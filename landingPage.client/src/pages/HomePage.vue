@@ -6,7 +6,7 @@
           <div class="col-12">
             <navbar class=""></navbar>
           </div>
-          <div class="col-12">
+          <div class="col-12 height-100">
             <div class="profile-text d-flex flex-column">
               <h2 class="muted-heading mb-0">Software</h2>
               <h2 class="muted-heading ms-5">Developer</h2>
@@ -21,23 +21,28 @@
                   development.
                 </p>
               </div>
-              <div class="d-flex align-items-center flex-column scroll-for-more">
+              <div class=" d-none d-md-flex align-items-center flex-column scroll-for-more mt-5">
                 <p class="mt-5 mb-0 border-bottom border-primary">Scroll for more</p>
                 <i class="mdi mdi-arrow-down-bold text-primary"></i>
               </div>
             </div>
+            <div class=" d-md-none d-flex align-items-center flex-column scroll-for-more mt-5">
+              <p class="mt-5 mb-0 border-bottom border-primary">Scroll for more</p>
+              <i class="mdi mdi-arrow-down-bold text-primary"></i>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 d-none d-md-block">
         <div class="right-side bg-secondary position-relative">
-          <img src="../assets/img/IMG_0655.JPG" class="head-shot rounded-start" alt="">
+          <!-- <img src="../assets/img/IMG_0655.JPG" class="head-shot rounded-start" alt=""> -->
+
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12 bg-dark height-100">
-        <div class="mt-3 section-div position-relative">
+        <div class="mt-3 section-div position-relative" id="aboutSection">
           <h3 class="text-primary">Passionate Developer</h3>
           <p class="text-muted">I am a lifelong learner and am always enthusiastic to learn a new skill. I have spent my
             adult life so far exploring new oppurtunites and trying new things. From Biology to firefighting to medicine
@@ -50,34 +55,55 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="" id="myWorkSection">
+
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home'
+  setup() {
+    return {
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
 .right-side {
   min-height: 100vh;
-  min-width: 50vw;
+  min-width: 100%;
 }
 
 .height-100 {
   min-height: 100vh;
 }
 
-.head-shot {
-  height: 70vh;
-  width: 60vw;
-  object-fit: cover;
-  object-position: middle;
-  position: absolute;
-  top: 10vh;
-  left: -10vw
-}
+// .head-shot {
+//   height: 70vh;
+//   width: 60vw;
+//   object-fit: cover;
+//   object-position: middle;
+//   position: absolute;
+//   top: 10vh;
+//   left: -10vw;
+//   right: 0;
+// }
+
+// .head-shot {
+//   height: 50vh;
+//   width: 60vw;
+//   object-fit: cover;
+//   object-position: top;
+//   top: 10vh;
+//   left: -10vw;
+//   right: 0;
+// }
 
 .muted-heading {
   letter-spacing: .3rem;
