@@ -1,15 +1,7 @@
 <template>
-  <header>
-    <Navbar />
-  </header>
   <main>
     <router-view />
   </main>
-  <footer>
-    <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
-    </div>
-  </footer>
 </template>
 
 <script>
@@ -27,4 +19,7 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
+main {
+  background-color: #15161A;
+}
 </style>

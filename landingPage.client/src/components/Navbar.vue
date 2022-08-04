@@ -1,56 +1,86 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+  <div class="row">
+    <div class="col-12">
+      <div class="navbar">
+        <h4 class="nav-link nav-link-ltr" id="about" href="#" @click="setActive(1)">About</h4>
+        <h4 class="nav-link nav-link-ltr" id="myWork" href="#" @click="setActive(2)">My Work</h4>
+        <h4 class="nav-link nav-link-ltr" id="contact" href="#" @click="setActive(3)">Contact</h4>
       </div>
-    </router-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon" />
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
-        <li>
-          <router-link
-            :to="{ name: 'About' }"
-            class="btn text-success lighten-30 selectable text-uppercase"
-          >
-            About
-          </router-link>
-        </li>
-      </ul>
-      <!-- LOGIN COMPONENT HERE -->
-      <Login />
+      <div class="nav-bar d-flex position-relative">
+        <div id="nav-bar-bar" class="nav-bar-bar left"></div>
+      </div>
     </div>
-  </nav>
+  </div>
 </template>
 
 <script>
 export default {
   setup() {
-    return {};
+    return {
+      setActive(position) {
+        if (position == 1) {
+          document.getElementById("about").classList.add("active")
+          document.getElementById("myWork").classList.remove("active")
+          document.getElementById("contact").classList.remove("active")
+        }
+        if (position == 2) {
+          document.getElementById("myWork").classList.add("active")
+          document.getElementById("about").classList.remove("active")
+          document.getElementById("contact").classList.remove("active")
+        }
+        if (position == 3) {
+          document.getElementById("contact").classList.add("active")
+          document.getElementById("myWork").classList.remove("active")
+          document.getElementById("about").classList.remove("active")
+        }
+      }
+    };
   },
 };
 </script>
 
 <style scoped>
-a:hover {
-  text-decoration: none;
-}
 .nav-link {
-  text-transform: uppercase;
+  padding: 20px 0px;
+  margin: 0px 20px;
+  display: inline-block;
+  position: relative;
+  color: #797f98;
 }
-.navbar-nav .router-link-exact-active {
-  border-bottom: 2px solid var(--bs-success);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+
+.nav-link:hover {
+  opacity: 1;
+  cursor: pointer;
+  color: #5484FF;
+}
+
+.nav-link.active {
+  color: #5484FF;
+}
+
+.nav-link::before.active {
+  width: 100%;
+  transition: 300ms;
+  height: 2px;
+  content: "";
+  position: absolute;
+  background-color: #5484FF;
+}
+
+.nav-link::before {
+  transition: 300ms;
+  height: 2px;
+  content: "";
+  position: absolute;
+  background-color: #5484FF;
+}
+
+.nav-link-ltr::before {
+  width: 0%;
+  bottom: 10px;
+}
+
+.nav-link-ltr:hover::before {
+  width: 100%;
 }
 </style>
