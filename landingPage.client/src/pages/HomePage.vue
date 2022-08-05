@@ -1,4 +1,8 @@
 <template>
+
+  <!-- <BackToTopFab /> -->
+
+
   <div class="container-fluid text-light">
     <div class="row">
       <div class="col-md-6">
@@ -42,32 +46,46 @@
     </div>
     <div class="row">
       <div class="col-12 bg-dark height-100">
-        <div class="mt-3 section-div position-relative" id="aboutSection">
-          <div class="reveal">
-            <h3 class="text-primary">Passionate Developer</h3>
-            <p class="text-muted">I am a lifelong learner and am always enthusiastic to learn a new skill. I have spent
-              my
-              adult life so far exploring new opportunities and trying new things. From Biology to firefighting to
-              medicine
-              and finance, my curiosity among various fields has known no bounds<br><br>
+        <div class="mt-3 section-div position-relative d-flex flex-column justify-content-between h-100"
+          id="aboutSection">
+          <div class="right-side-text reveal mt-5 position-relative d-flex flex-column">
+            <h3 class="text-primary text-md-start text-center">Passionate Problem Solver</h3>
+            <p class="text-muted about-paragraph">Most of my adult life has been spent trying to find something I'm
+              passionate about.
+              I've explored areas such as medicine, firefighting, and finance - but none of these careers felt right to
+              me. Until I discovered software development.<br><br>
 
-              However, none have piqued my interest as much as software development. The opportunity to learn new things
-              and solve different problems every day has kept me passionately learning ever since I typed my first line
-              of
-              code.</p>
+              I wake up every day excited to build amazing solutions to real problems. The limitless opportunity to
+              learn new
+              skills and innovate motivates me more than anything else ever has.</p>
+            <h1 class="about-underlay about-underlay-1 reveal">
+              &lt;Div&gt;
+            </h1>
           </div>
-          <div class="reveal text-end">
-            <h3 class="text-primary">Passionate Developer</h3>
-            <p class="text-muted">I am a lifelong learner and am always enthusiastic to learn a new skill. I have spent
-              my
-              adult life so far exploring new oppurtunites and trying new things. From Biology to firefighting to
-              medicine
-              and finance, my curiousity among various fields has known no bounds<br><br>
-
-              However, none have piqued my interest as much as software development. The opportunity to learn new things
-              and solve different problems every day has kept me passionatly learning ever since I typed my first line
-              of
-              code.</p>
+          <div class="d-flex flex-column reveal mt-5 align-items-center position-relative reveal">
+            <h3 class="mt-md-5 text-primary">My skills</h3>
+            <div class="reveal mt-3 d-flex justify-content-center text-muted flex-wrap skills">
+              <p class="mx-3 skill">HTML</p>
+              <p class="mx-3 skill">CSS</p>
+              <p class="mx-3 skill">JavaScript</p>
+              <p class="mx-3 skill">BootStrap</p>
+              <p class="mx-3 skill">MVC</p>
+              <p class="mx-3 skill">Node.js</p>
+              <p class="mx-3 skill">Mongoose</p>
+              <p class="mx-3 skill">Vue.js</p>
+              <p class="mx-3 skill">C#</p>
+              <p class="mx-3 skill">.net</p>
+              <p class="mx-3 skill">MySql</p>
+              <p class="mx-3 skill">Git</p>
+              <p class="mx-3 skill">Scrum</p>
+            </div>
+            <p class="text-primary">And More!</p>
+          </div>
+          <div class="position-relative d-flex flex-column links-section">
+            <h3 class="text-primary mt-5">
+              My Links
+            </h3>
+            <i class="mdi mdi-magnify about-underlay-2 reveal"></i>
           </div>
         </div>
       </div>
@@ -75,7 +93,6 @@
     <div class="row">
       <div class="col-12">
         <div class="" id="myWorkSection">
-
         </div>
       </div>
     </div>
@@ -95,8 +112,17 @@ export default {
         var elementVisible = 20;
         if (elementTop < windowHeight - elementVisible) {
           reveals[i].classList.add("active");
+          if (reveals[i].classList.contains("about-underlay")) {
+            reveals[i].classList.add("underlay-reveal");
+          }
+          if (reveals[i].classList.contains("skill")) {
+            reveals[i].classList.add("active-skill");
+          }
         } else {
           reveals[i].classList.remove("active");
+          if (reveals[i].classList.contains("about-underlay")) {
+            reveals[i].classList.remove("underlay-reveal");
+          }
         }
       }
     }
@@ -114,14 +140,14 @@ export default {
 <style scoped lang="scss">
 .reveal {
   position: relative;
-  transform: translateY(150px);
   opacity: 0;
-  transition: 2s all ease;
+  transform: translateY(4rem);
+  transition: 1s all ease;
 }
 
 .reveal.active {
-  transform: translateY(0);
   opacity: 1;
+  transform: translateY(0);
 }
 
 .right-side {
@@ -130,7 +156,7 @@ export default {
 }
 
 .height-100 {
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .head-shot {
@@ -181,8 +207,23 @@ export default {
 }
 
 .section-div {
-  margin-left: 5vw;
-  margin-right: 30vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+.right-side-text {
+  padding-right: 30vw;
+}
+
+.left-side-text {
+  padding-left: 30vw;
+}
+
+@media (max-width: 840px) {
+  .right-side-text {
+    padding-right: 5vw;
+    text-align: justify;
+  }
 }
 
 .profile-text h2 {
@@ -222,12 +263,65 @@ export default {
   transition: 300ms;
 }
 
-.vue-icon {
+.about-underlay-1 {
+  color: #323540ae;
   position: absolute;
-  top: 10rem;
-  right: -10rem;
-  font-size: 20rem;
+  left: -20vw;
+  top: 25rem;
+  font-size: 12rem;
+  font-weight: bold;
+  z-index: 1;
+  transition: 400ms;
 }
+
+.about-underlay-1.underlay-reveal {
+  left: 45vw;
+  top: 3rem;
+  transition: 400ms ease-in;
+}
+
+@media (max-width: 840px) {
+  .about-underlay-1.underlay-reveal {
+    left: 10vw;
+    top: 15rem;
+    transition: 400ms ease-in;
+    font-size: 8rem;
+  }
+}
+
+.about-underlay-2 {
+  color: #323540ae;
+  position: absolute;
+  left: 10vw;
+  top: -5rem;
+  font-size: 12rem;
+  font-weight: bold;
+  z-index: 1;
+}
+
+
+
+.about-paragraph {
+  z-index: 200;
+}
+
+.skills {
+  z-index: 200;
+}
+
+.skill {}
+
+.skill.active-skill {
+  transform: translateY(0);
+  opacity: 1;
+  transition: 400ms;
+}
+
+.links-section h3 {
+  z-index: 200;
+}
+
+
 
 
 @keyframes from-bottom {
