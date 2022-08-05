@@ -35,7 +35,7 @@
       </div>
       <div class="col-md-6 d-none d-md-block">
         <div class="right-side bg-secondary position-relative">
-          <!-- <img src="../assets/img/IMG_0655.JPG" class="head-shot rounded-start" alt=""> -->
+          <img src="../assets/img/IMG_0655.JPG" class="head-shot rounded-start" alt="">
 
         </div>
       </div>
@@ -43,15 +43,32 @@
     <div class="row">
       <div class="col-12 bg-dark height-100">
         <div class="mt-3 section-div position-relative" id="aboutSection">
-          <h3 class="text-primary">Passionate Developer</h3>
-          <p class="text-muted">I am a lifelong learner and am always enthusiastic to learn a new skill. I have spent my
-            adult life so far exploring new oppurtunites and trying new things. From Biology to firefighting to medicine
-            and finance, my curiousity among various fields has known no bounds<br><br>
+          <div class="reveal">
+            <h3 class="text-primary">Passionate Developer</h3>
+            <p class="text-muted">I am a lifelong learner and am always enthusiastic to learn a new skill. I have spent
+              my
+              adult life so far exploring new opportunities and trying new things. From Biology to firefighting to
+              medicine
+              and finance, my curiosity among various fields has known no bounds<br><br>
 
-            However, none have piqued my interest as much as software development. The opportunity to learn new things
-            and solve different problems every day has kept me passionatly learning ever since I typed my first line of
-            code.</p>
-          <i class="mdi mdi-vuejs vue-icon text-muted"></i>
+              However, none have piqued my interest as much as software development. The opportunity to learn new things
+              and solve different problems every day has kept me passionately learning ever since I typed my first line
+              of
+              code.</p>
+          </div>
+          <div class="reveal text-end">
+            <h3 class="text-primary">Passionate Developer</h3>
+            <p class="text-muted">I am a lifelong learner and am always enthusiastic to learn a new skill. I have spent
+              my
+              adult life so far exploring new oppurtunites and trying new things. From Biology to firefighting to
+              medicine
+              and finance, my curiousity among various fields has known no bounds<br><br>
+
+              However, none have piqued my interest as much as software development. The opportunity to learn new things
+              and solve different problems every day has kept me passionatly learning ever since I typed my first line
+              of
+              code.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -66,15 +83,47 @@
 </template>
 
 <script>
+import { onMounted } from "vue";
+
 export default {
   setup() {
+    function reveal() {
+      var reveals = document.querySelectorAll(".reveal");
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 20;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add("active");
+        } else {
+          reveals[i].classList.remove("active");
+        }
+      }
+    }
+    onMounted(() => {
+      window.addEventListener("scroll", reveal);
+      reveal()
+    })
     return {
+
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
+.reveal {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+
+.reveal.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 .right-side {
   min-height: 100vh;
   min-width: 100%;
@@ -84,16 +133,21 @@ export default {
   min-height: 100vh;
 }
 
-// .head-shot {
-//   height: 70vh;
-//   width: 60vw;
-//   object-fit: cover;
-//   object-position: middle;
-//   position: absolute;
-//   top: 10vh;
-//   left: -10vw;
-//   right: 0;
-// }
+.head-shot {
+  height: 70vh;
+  width: 60vw;
+  object-fit: cover;
+  object-position: middle;
+  position: absolute;
+  top: 10vh;
+  left: -10vw;
+  right: 0;
+  animation: from-right 600ms ease-out 300ms;
+  filter: grayscale(.15);
+  transform: translateY(-130%);
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
 
 // .head-shot {
 //   height: 50vh;
@@ -111,6 +165,11 @@ export default {
   font-weight: bold;
   transform: translateY(2.1rem);
   z-index: 1;
+  opacity: 0;
+  transform: translateX(-130%);
+  animation: from-left 1500ms;
+  animation-fill-mode: forwards;
+
 }
 
 .profile-text {
@@ -118,6 +177,7 @@ export default {
   margin-left: 5vw;
   margin-right: 20vw;
   font-size: larger;
+  animation: fade-in 1500ms;
 }
 
 .section-div {
@@ -167,5 +227,58 @@ export default {
   top: 10rem;
   right: -10rem;
   font-size: 20rem;
+}
+
+
+@keyframes from-bottom {
+  0% {
+    transform: translateY(130%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes from-right {
+  0% {
+    transform: translateX(130%);
+    opacity: 0;
+  }
+
+  30% {
+    transform: translateX(-15%);
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes from-left {
+  0% {
+    transform: translateX(-130%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+    transform: translateY(2.1rem);
+
+  }
 }
 </style>
