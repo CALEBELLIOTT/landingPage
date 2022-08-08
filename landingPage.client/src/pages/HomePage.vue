@@ -10,7 +10,7 @@
           <div class="col-12">
             <navbar class=""></navbar>
           </div>
-          <div class="col-12 height-100">
+          <div class="col-12 h-90">
             <div class="profile-text d-flex flex-column">
               <h2 class="muted-heading mb-0">Software</h2>
               <h2 class="muted-heading ms-5">Developer</h2>
@@ -31,7 +31,7 @@
               </div>
             </div>
             <div class=" d-md-none d-flex align-items-center flex-column scroll-for-more mt-5">
-              <p class="mt-5 mb-0 border-bottom border-primary">Scroll for more</p>
+              <p class="mt-5 mt- mb-0 border-bottom border-primary">Scroll for more</p>
               <i class="mdi mdi-arrow-down-bold text-primary"></i>
             </div>
           </div>
@@ -40,13 +40,14 @@
       <div class="col-md-6 d-none d-md-block">
         <div class="right-side bg-secondary position-relative">
           <img src="../assets/img/IMG_0655.JPG" class="head-shot rounded-start" alt="">
-
         </div>
       </div>
     </div>
+
+
     <div class="row">
       <div class="col-12 bg-dark height-100">
-        <div class="mt-3 section-div position-relative d-flex flex-column justify-content-between h-100"
+        <div class=" section-div position-relative d-flex flex-column justify-content-evenly h-100 pt-md-0 pt-5"
           id="aboutSection">
           <div class="right-side-text reveal mt-5 position-relative d-flex flex-column">
             <h3 class="text-primary text-md-start text-center">Passionate Problem Solver</h3>
@@ -58,44 +59,64 @@
               I wake up every day excited to build amazing solutions to real problems. The limitless opportunity to
               learn new
               skills and innovate motivates me more than anything else ever has.</p>
-            <h1 class="about-underlay about-underlay-1 reveal">
+            <!-- <h1 class="about-underlay about-underlay-1 reveal">
               &lt;Div&gt;
-            </h1>
+            </h1> -->
           </div>
-          <div class="d-flex flex-column reveal mt-5 align-items-center position-relative reveal">
-            <h3 class="mt-md-5 text-primary">My skills</h3>
-            <div class="reveal mt-3 d-flex justify-content-center text-muted flex-wrap skills">
-              <p class="mx-3 skill">HTML</p>
-              <p class="mx-3 skill">CSS</p>
-              <p class="mx-3 skill">JavaScript</p>
-              <p class="mx-3 skill">BootStrap</p>
-              <p class="mx-3 skill">MVC</p>
-              <p class="mx-3 skill">Node.js</p>
-              <p class="mx-3 skill">Mongoose</p>
-              <p class="mx-3 skill">Vue.js</p>
-              <p class="mx-3 skill">C#</p>
-              <p class="mx-3 skill">.net</p>
-              <p class="mx-3 skill">MySql</p>
-              <p class="mx-3 skill">Git</p>
-              <p class="mx-3 skill">Scrum</p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="d-flex flex-column reveal mt-5 align-items-center position-relative reveal">
+                <h3 class="mt-md-5 text-primary">My skills</h3>
+                <div class=" mt-3 d-flex justify-content-center text-muted flex-wrap skills">
+                  <p class="mx-3 skill">HTML</p>
+                  <p class="mx-3 skill">CSS</p>
+                  <p class="mx-3 skill">JavaScript</p>
+                  <p class="mx-3 skill">BootStrap</p>
+                  <p class="mx-3 skill">MVC</p>
+                  <p class="mx-3 skill">Node.js</p>
+                  <p class="mx-3 skill">Mongoose</p>
+                  <p class="mx-3 skill">Vue.js</p>
+                  <p class="mx-3 skill">C#</p>
+                  <p class="mx-3 skill">.net</p>
+                  <p class="mx-3 skill">MySql</p>
+                  <p class="mx-3 skill">Git</p>
+                  <p class="mx-3 skill">Scrum</p>
+                </div>
+                <p class="text-primary">And More!</p>
+              </div>
             </div>
-            <p class="text-primary">And More!</p>
-          </div>
-          <div class="position-relative d-flex flex-column links-section">
-            <h3 class="text-primary mt-5">
-              My Links
-            </h3>
-            <i class="mdi mdi-magnify about-underlay-2 reveal"></i>
+            <div class="col-md-6">
+              <div class="position-relative d-flex flex-column align-items-center links-section mt-5 reveal">
+                <h3 class="text-primary mt-md-5">
+                  My Links
+                </h3>
+                <div class="mt-3 d-flex justify-content-around text-muted w-100">
+                  <a href="https://github.com/CALEBELLIOTT" class="link text-muted"><i
+                      class="mdi mdi-github link-icon"></i></a>
+                  <a href="https://www.linkedin.com/in/caleb-elliott1/" class="link text-muted"><i
+                      class="mdi mdi-linkedin link-icon"></i></a>
+                  <a href="https://www.dropbox.com/s/vv31xngsg7agrod/Caleb-Elliott-Resume.pdf?dl=0"
+                    class="link text-muted"><i class="mdi mdi-file link-icon"></i></a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+
     <div class="row">
       <div class="col-12">
         <div class="" id="myWorkSection">
+          <div class="section-div height-100 my-work-section" id="myWorkSection">
+            <WorkSection></WorkSection>
+          </div>
         </div>
       </div>
     </div>
+
+
   </div>
 </template>
 
@@ -127,8 +148,8 @@ export default {
       }
     }
     onMounted(() => {
-      window.addEventListener("scroll", reveal);
       reveal()
+      window.addEventListener("scroll", reveal);
     })
     return {
 
@@ -168,26 +189,16 @@ export default {
   top: 10vh;
   left: -10vw;
   right: 0;
-  animation: from-right 600ms ease-out 300ms;
+  animation: from-right 1500ms ease-out 300ms;
   filter: grayscale(.15);
   transform: translateY(-130%);
   opacity: 0;
   animation-fill-mode: forwards;
 }
 
-// .head-shot {
-//   height: 50vh;
-//   width: 60vw;
-//   object-fit: cover;
-//   object-position: top;
-//   top: 10vh;
-//   left: -10vw;
-//   right: 0;
-// }
-
 .muted-heading {
   letter-spacing: .3rem;
-  color: #323540ae;
+  color: #1b1e279c;
   font-weight: bold;
   transform: translateY(2.1rem);
   z-index: 1;
@@ -267,7 +278,7 @@ export default {
   color: #323540ae;
   position: absolute;
   left: -20vw;
-  top: 25rem;
+  top: 35rem;
   font-size: 12rem;
   font-weight: bold;
   z-index: 1;
@@ -276,29 +287,39 @@ export default {
 
 .about-underlay-1.underlay-reveal {
   left: 45vw;
-  top: 3rem;
+  top: 8rem;
   transition: 400ms ease-in;
 }
 
-@media (max-width: 840px) {
-  .about-underlay-1.underlay-reveal {
-    left: 10vw;
-    top: 15rem;
-    transition: 400ms ease-in;
-    font-size: 8rem;
-  }
-}
 
 .about-underlay-2 {
   color: #323540ae;
   position: absolute;
-  left: 10vw;
-  top: -5rem;
+  left: 5vw;
+  top: -8rem;
   font-size: 12rem;
   font-weight: bold;
   z-index: 1;
 }
 
+
+@media (max-width: 840px) {
+  .about-underlay-1.underlay-reveal {
+    left: 25vw;
+    top: 17rem;
+    transition: 400ms ease-in;
+    font-size: 8rem;
+    display: none;
+  }
+
+  .about-underlay-2 {
+    font-size: 9rem;
+    top: -5rem;
+
+  }
+
+
+}
 
 
 .about-paragraph {
@@ -319,6 +340,24 @@ export default {
 
 .links-section h3 {
   z-index: 200;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link-icon {
+  font-size: 5rem;
+  transition: 500ms;
+}
+
+.link-icon:hover {
+  color: #5484FF;
+  transition: 500ms;
+}
+
+.my-work-section {
+  background-color: #393c46;
 }
 
 

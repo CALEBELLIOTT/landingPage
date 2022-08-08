@@ -1,9 +1,9 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <div class="navbar">
+      <div class="navbar height-10">
         <h4 class="nav-link nav-link-ltr" id="about" @click="scrollFirst()">About</h4>
-        <h4 class="nav-link nav-link-ltr" id="myWork" @click="">My Work</h4>
+        <h4 class="nav-link nav-link-ltr" id="myWork" @click="scrollSecond()">My Work</h4>
         <h4 class="nav-link nav-link-ltr" id="contact" @click="">Contact</h4>
       </div>
       <div class="nav-bar d-flex position-relative">
@@ -38,7 +38,13 @@ export default {
         let target = document.getElementById('aboutSection')
         console.log(target);
         target.scrollIntoView(true)
-      }
+      },
+      scrollSecond() {
+        let target = document.getElementById('myWorkSection')
+        console.log(target);
+        target.scrollIntoView(true)
+      },
+
     };
   },
 };
@@ -74,5 +80,9 @@ export default {
 
 .nav-link-ltr:hover::before {
   width: 100%;
+}
+
+.height-10 {
+  height: 10vh;
 }
 </style>
