@@ -82,10 +82,15 @@
                   @click="setActive('onTracker-inactive')">
                 </div>
               </div>
-              <!-- <div class="col-12">
-              <div class="project" style="background-image: url(/src/assets/img/tower.png);">
+              <div class="col-12">
+                <div class="row d-flex justify-content-center mt-2">
+                  <div class="col-md-6">
+                    <div class="project" id="keepr-inactive" :style="`background-image: url(${projectData.keepr.img});`"
+                      @click="setActive('keepr-inactive')">
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div> -->
             </div>
           </div>
         </transition>
@@ -127,13 +132,16 @@ export default {
     }
     return {
       project: computed(() => AppState.activeProject),
+      projectData: computed(() => AppData),
       setActive(id) {
         document.getElementById(id).classList.add("inactive")
         if (id == "tower-inactive") {
           AppState.activeProject = AppData.tower
+          document.getElementById("onTracker-inactive").classList.add("inactive")
         }
         if (id == "onTracker-inactive") {
           AppState.activeProject = AppData.onTracker
+          document.getElementById("tower-inactive").classList.add("inactive")
         }
         if (id == "keepr-inactive") {
           AppState.activeProject = AppData.keepr
@@ -142,7 +150,8 @@ export default {
       reset() {
         AppState.activeProject = {}
         reveal()
-      }
+      },
+
     }
   }
 }
@@ -164,7 +173,8 @@ export default {
 
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.5s ease .5s;
+  transition: opacity 0.5s ease;
+  transition-delay: 500ms;
 }
 
 .v-enter-from,
@@ -191,21 +201,20 @@ export default {
   transition: 300ms;
 }
 
-.project.active {
-  height: 15rem;
-  width: 60vw;
-  background-size: cover;
-  border: 3px solid #5484FF;
-  border-radius: 5px;
-  position: absolute;
-  top: 15vh;
-  right: 0vw;
-  transition-property: top 300ms;
-}
+// .project.active {
+//   height: 15rem;
+//   width: 60vw;
+//   background-size: cover;
+//   border: 3px solid #5484FF;
+//   border-radius: 5px;
+//   position: absolute;
+//   top: 15vh;
+//   right: 0vw;
+// }
 
 .project.inactive {
   opacity: 0;
-  transition: 300ms;
+  transition: 500ms;
 }
 
 .project-img {

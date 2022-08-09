@@ -4,7 +4,7 @@
       <div class="navbar height-10">
         <h4 class="nav-link nav-link-ltr" id="about" @click="scrollFirst()">About</h4>
         <h4 class="nav-link nav-link-ltr" id="myWork" @click="scrollSecond()">My Work</h4>
-        <h4 class="nav-link nav-link-ltr" id="contact" @click="">Contact</h4>
+        <h4 class="nav-link nav-link-ltr" id="contact" @click="openMail()">Contact</h4>
       </div>
       <div class="nav-bar d-flex position-relative">
         <div id="nav-bar-bar" class="nav-bar-bar left"></div>
@@ -44,6 +44,9 @@ export default {
         console.log(target);
         target.scrollIntoView(true)
       },
+      openMail() {
+        window.open('mailto:caleb123elliott@gmail.com?subject=Lets Work Together&body=body');
+      }
 
     };
   },

@@ -29,7 +29,8 @@ export const AppData = {
     name: "Keepr",
     description: "A full-stack application which functions similarly to Pintrist. Users are able to post 'Keeps' which they can store in 'Vaults'. Vaults can be public and private and other users can save your keeps to their vaults if they so choose.",
     technologiesUsed: ["Vue.js", ".net", "C#", "Auth0", "Vue-Router", "MySQL"],
+    img: "https://i.imgur.com/sgm7vVT.png",
     repoLink: "https://github.com/CALEBELLIOTT/Keepr",
-    liveLink: ""
+    liveLink: "https://keeprheroku.herokuapp.com/#/"
   }
 }
