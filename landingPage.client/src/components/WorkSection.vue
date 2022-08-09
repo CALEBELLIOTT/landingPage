@@ -72,13 +72,13 @@
           <div class="projects reveal" id="projectsSection" v-if="!project.name">
             <div class="row">
               <div class="col-md-6">
-                <div class="project my-2" id="tower-inactive" style="background-image: url(/src/assets/img/tower.png);"
-                  @click="setActive('tower-inactive')">
+                <div class="project my-2" id="tower-inactive"
+                  :style="`background-image: url(${projectData.tower.img});`" @click="setActive('tower-inactive')">
                 </div>
               </div>
               <div class="col-md-6 my-2">
                 <div class="project" id="onTracker-inactive"
-                  style="background-image: url(/src/assets/img/on-tracker.png);"
+                  :style="`background-image: url(${projectData.onTracker.img});`"
                   @click="setActive('onTracker-inactive')">
                 </div>
               </div>

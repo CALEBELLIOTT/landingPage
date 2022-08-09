@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [vue()],
   build: {
-    outDir: '../LandingPage',
+    outDir: '../landingPage/wwwroot',
     sourcemap: false
   },
   server: {

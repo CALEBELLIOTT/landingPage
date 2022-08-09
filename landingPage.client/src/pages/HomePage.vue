@@ -39,7 +39,7 @@
       </div>
       <div class="col-md-6 d-none d-md-block">
         <div class="right-side bg-secondary position-relative">
-          <img src="../assets/img/IMG_0655.JPG" class="head-shot rounded-start" alt="">
+          <img src="https://i.imgur.com/Kx2Mh8r.jpg" class="head-shot rounded-start" alt="">
         </div>
       </div>
     </div>
