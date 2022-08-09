@@ -82,7 +82,7 @@
                   @click="setActive('onTracker-inactive')">
                 </div>
               </div>
-              <div class="col-12">
+              <div class="col-12 d-md-block d-none">
                 <div class="row d-flex justify-content-center mt-2">
                   <div class="col-md-6">
                     <div class="project" id="keepr-inactive" :style="`background-image: url(${projectData.keepr.img});`"
