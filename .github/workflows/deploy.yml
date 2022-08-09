@@ -20,10 +20,10 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      - name: Set Env Vars
-        uses: microsoft/variable-substitution@v1
-        with:
-          files: 'landingPage/appsettings.json'
+      # - name: Set Env Vars
+      #   uses: microsoft/variable-substitution@v1
+      #   with:
+      #     files: 'landingPage/appsettings.json'
         # env:
         #   CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
         #   AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
