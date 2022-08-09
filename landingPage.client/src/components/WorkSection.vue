@@ -1,30 +1,95 @@
 <template>
   <div class="row position-relative">
     <div class="col-12">
-      <div class="d-flex flex-column justify-content-around height-100">
-        <h3 class="text-primary">
-          My Recent Software Projects
-        </h3>
-        <div class="h-50 project-description">
-        </div>
-        <div class="projects">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="project" id="tower" style="background-image: url(/src/assets/img/tower.png);"
-                @click="setActive('tower')">
+      <div class="d-flex flex-column justify-content-evenly height-100">
+
+        <transition>
+          <div class="text-center" v-if="!project.name">
+            <h3 class="text-primary">
+              My Recent Software Projects
+            </h3>
+            <p class="text-muted">Some things that I have built</p>
+          </div>
+        </transition>
+
+
+        <transition>
+          <div class="align-items-center d-none d-md-flex" v-if="project.name">
+            <div class="d-flex flex-column">
+              <button class="btn btn-outline-primary mb-2 reset-btn" @click="reset()">Reset</button>
+              <img class="project-img" :src="project?.img" :alt="project.name + ' home page'">
+            </div>
+            <div class="mx-3" v-if="project.name">
+              <h3 class="text-primary">{{ project.name }}</h3>
+              <p>{{ project.description }}</p>
+            </div>
+          </div>
+        </transition>
+
+        <transition>
+          <div class="row d-md-none" v-if="project.name">
+            <div class="col-12">
+              <div class="d-flex flex-column">
+                <button class="btn btn-outline-primary mb-2 reset-btn" @click="reset()">Reset</button>
+                <img class="img-fluid" :src="project?.img" :alt="project.name + ' home page'">
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="project" id="onTracker" style="background-image: url(/src/assets/img/on-tracker.png);"
-                @click="setActive('onTracker')">
-              </div>
+            <div class="col-12">
+              <h3 class="text-primary mt-2">{{ project.name }}</h3>
+              <p class="mt-3 mx-2">
+                {{ project.description }}
+              </p>
             </div>
-            <!-- <div class="col-12">
+
+          </div>
+        </transition>
+
+        <transition>
+          <div class="d-flex justify-content-between" v-if="project.name">
+            <div>
+              <h3 class="text-primary">Technologies Used</h3>
+              <ul class="justify-content-between">
+                <li v-for="t in project.technologiesUsed">{{ t }}</li>
+              </ul>
+            </div>
+            <div>
+              <h1><a :href="project.repoLink"><i class="mdi mdi-github"></i></a></h1>
+              <h1><a :href="project.liveLink"><i class="mdi mdi-search-web"></i></a></h1>
+            </div>
+          </div>
+        </transition>
+
+
+
+
+
+
+
+
+
+
+        <transition>
+          <div class="projects reveal" id="projectsSection" v-if="!project.name">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="project my-2" id="tower-inactive" style="background-image: url(/src/assets/img/tower.png);"
+                  @click="setActive('tower-inactive')">
+                </div>
+              </div>
+              <div class="col-md-6 my-2">
+                <div class="project" id="onTracker-inactive"
+                  style="background-image: url(/src/assets/img/on-tracker.png);"
+                  @click="setActive('onTracker-inactive')">
+                </div>
+              </div>
+              <!-- <div class="col-12">
               <div class="project" style="background-image: url(/src/assets/img/tower.png);">
               </div>
             </div> -->
+            </div>
           </div>
-        </div>
+        </transition>
+
       </div>
     </div>
   </div>
@@ -32,11 +97,51 @@
 
 
 <script>
+import { computed } from "vue"
+import { AppState } from "../AppState"
+import { AppData } from "../AppState"
+
 export default {
   setup() {
+    function reveal() {
+      var reveals = document.querySelectorAll(".reveal");
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 20;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add("active");
+          if (reveals[i].classList.contains("about-underlay")) {
+            reveals[i].classList.add("underlay-reveal");
+          }
+          if (reveals[i].classList.contains("skill")) {
+            reveals[i].classList.add("active-skill");
+          }
+        } else {
+          reveals[i].classList.remove("active");
+          if (reveals[i].classList.contains("about-underlay")) {
+            reveals[i].classList.remove("underlay-reveal");
+          }
+        }
+      }
+    }
     return {
+      project: computed(() => AppState.activeProject),
       setActive(id) {
-        document.getElementById(id).classList.add("active")
+        document.getElementById(id).classList.add("inactive")
+        if (id == "tower-inactive") {
+          AppState.activeProject = AppData.tower
+        }
+        if (id == "onTracker-inactive") {
+          AppState.activeProject = AppData.onTracker
+        }
+        if (id == "keepr-inactive") {
+          AppState.activeProject = AppData.keepr
+        }
+      },
+      reset() {
+        AppState.activeProject = {}
+        reveal()
       }
     }
   }
@@ -45,6 +150,29 @@ export default {
 
 
 <style lang="scss" scoped>
+.reveal {
+  position: relative;
+  opacity: 0;
+  transform: translateY(4rem);
+  transition: 1s all ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease .5s;
+}
+
+.v-enter-from,
+.v-leave-to {
+  transition: opacity .5s ease;
+  opacity: 0;
+}
+
 .height-100 {
   min-height: 100vh;
 }
@@ -72,10 +200,23 @@ export default {
   position: absolute;
   top: 15vh;
   right: 0vw;
-  transition: 300ms;
+  transition-property: top 300ms;
 }
 
 .project.inactive {
-  display: none;
+  opacity: 0;
+  transition: 300ms;
+}
+
+.project-img {
+  height: 40vh;
+  width: 50vw;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 4px;
+}
+
+.reset-btn {
+  width: fit-content;
 }
 </style>

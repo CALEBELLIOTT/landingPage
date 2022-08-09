@@ -54,8 +54,8 @@
             <p class="text-muted about-paragraph">Most of my adult life has been spent trying to find something I'm
               passionate about.
               I've explored areas such as medicine, firefighting, and finance - but none of these careers felt right to
-              me. Until I discovered software development.<br><br>
-
+              me. Until I discovered software development.</p>
+            <p class="text-muted d-md-block d-none">
               I wake up every day excited to build amazing solutions to real problems. The limitless opportunity to
               learn new
               skills and innovate motivates me more than anything else ever has.</p>
@@ -65,7 +65,7 @@
           </div>
           <div class="row">
             <div class="col-md-6">
-              <div class="d-flex flex-column reveal mt-5 align-items-center position-relative reveal">
+              <div class="d-flex flex-column reveal mt-md-5 mt-3 align-items-center position-relative reveal">
                 <h3 class="mt-md-5 text-primary">My skills</h3>
                 <div class=" mt-3 d-flex justify-content-center text-muted flex-wrap skills">
                   <p class="mx-3 skill">HTML</p>
@@ -115,6 +115,10 @@
         </div>
       </div>
     </div>
+
+    <ContactBar></ContactBar>
+
+
 
 
   </div>
@@ -347,7 +351,7 @@ export default {
 }
 
 .link-icon {
-  font-size: 5rem;
+  font-size: 3rem;
   transition: 500ms;
 }
 
@@ -358,6 +362,10 @@ export default {
 
 .my-work-section {
   background-color: #393c46;
+}
+
+.h-90 {
+  min-height: 90vh;
 }
 
 
