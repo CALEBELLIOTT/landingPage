@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <span class="navbar-text">
     <button
       class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0"
@@ -81,4 +81,4 @@ export default {
 .hoverable {
   cursor: pointer;
 }
-</style>
+</style> -->
